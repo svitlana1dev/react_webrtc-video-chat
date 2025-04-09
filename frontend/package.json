@@ -2,17 +2,29 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "cra-template-redux": "2.0.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npx tsc && react-scripts start",
+    "dev": "npx tsc --watch & react-scripts start",
+    "build": "npx tsc && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
+    "cra-template-redux": "2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.0.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/react-redux": "^7.1.34",
+    "react-router-dom":"^6.0.0",
+    "typescript": "^4.9.5"
   },
   "eslintConfig": {
     "extends": [
