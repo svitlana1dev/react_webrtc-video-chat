@@ -4,7 +4,7 @@ import cors from "cors";
 import { Server, Socket } from "socket.io";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 const server = http.createServer(app);
 
 app.use(express.json());
