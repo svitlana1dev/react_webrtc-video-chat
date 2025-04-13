@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { setMyLocation } from "../MapPage/mapSlice";
 import { getFakeLocation } from "./FAKE_LOCATION";
-import "./LoginPage.css";
 import { connectWithSocketIOServer } from "../socketConnection/socketConnection";
+import { proceedWithLogin } from "../store/actions/loginPageActions";
+import "./LoginPage.css";
 
 export const LoginPage: FC = () => {
   const [userName, setUserName] = useState("");
   const [locationErrorOccurred] = useState(false);
 
-  const myLocation = useAppSelector((state) => state.map.myLocation);
+  const myLocation: { lat: number; lng: number } | null = useAppSelector(
+    (state) => state.map.myLocation
+  ) as { lat: number; lng: number } | null;
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -59,6 +62,14 @@ export const LoginPage: FC = () => {
   };
 
   const handleLogin = () => {
+    const data = {
+      userName,
+      coords: {
+        lng: myLocation ? myLocation.lng : 0,
+        lat: myLocation ? myLocation.lat : 0,
+      },
+    };
+    proceedWithLogin(data);
     navigate("/map");
   };
 
